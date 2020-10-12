@@ -5,32 +5,36 @@
 
 
 #include <stdio.h>
-int beer_bottle(int n);
+int beer_bottles(int n);
+int give_me_bottle(int n);
 
 int main(void){
 
 
-    int a=beer_bottle(20);
-    printf("%d",a);
+    printf("you can drink %d bottles of beer",beer_bottles(22));
 
 
 }
 
-int beer_bottle(int n){
+int give_me_bottle(int n){
+    int start_bottle=n;
+    int given_bottle=0;
 
-    int given_botlle=0;
-
-    for ( n; (n/3)>=1; n-=3)
+    for ( int i=n; (i/3)>=1; i-=3)
     {
-        given_botlle++;
-    }
-    if (given_botlle>3)
-    {
-       return given_botlle+beer_bottle(given_botlle);
+        given_bottle++;
     }
     
-    
+    if (given_bottle<3)
+    {
+       return given_bottle;;
+    }else
+    {
+        return given_bottle+give_me_bottle(given_bottle);
+    }
+}
 
-    return given_botlle;
-
+int beer_bottles(int n){
+    int count_of_bottles=n+give_me_bottle(n);
+    return count_of_bottles;
 }
