@@ -17,24 +17,12 @@ int main(void){
 }
 
 int give_me_bottle(int n){
-    int start_bottle=n;
-    int given_bottle=0;
-
-    for ( int i=n; (i/3)>=1; i-=3)
-    {
-        given_bottle++;
+    if( n <= 2 ) {
+         return n;
     }
-    
-    if (given_bottle<3)
-    {
-       return given_bottle;;
-    }else
-    {
-        return given_bottle+give_me_bottle(given_bottle);
-    }
+    return n + give_me_bottle(n/3);
 }
 
 int beer_bottles(int n){
-    int count_of_bottles=n+give_me_bottle(n);
-    return count_of_bottles;
+    return give_me_bottle(n);
 }
